@@ -1,0 +1,47 @@
+{
+  "name": "surrealkit",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [
+    "surrealdb",
+    "migration"
+  ],
+  "homepage": "...",
+  "bugs": {
+    "url": ""
+  },
+  "author": "Eddie McConkie",
+  "repository": {
+    "type": "git",
+    "url": "git+..."
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write .",
+    "check-format": "prettier --check .",
+    "check-exports": "attw --pack .",
+    "ci": "pnpm build && pnpm check-format && pnpm check-exports",
+    "local-release": "pnpm ci && changeset version && changeset publish"
+  },
+  "bin": {
+    "surrealkit": "dist/cli.js"
+  },
+  "exports": {},
+  "license": "MIT",
+  "dependencies": {
+    "@clack/prompts": "^0.7.0"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.16.4",
+    "@changesets/cli": "^2.27.8",
+    "@types/node": "^22.7.4",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.2",
+    "vitest": "^2.1.1"
+  }
+}
