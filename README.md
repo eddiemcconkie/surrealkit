@@ -11,10 +11,10 @@ A CLI tool for managing SurrealDB migrations
 
 ## Command overview
 
-### Create a new schema migration
-
 > [!NOTE]
 > When using the CLI you can use the command `surrealkit`, or the abbreviated alias `surkit` (sounds like "circuit")
+
+### Create a new schema migration
 
 ```bash
 surkit diff <migration-name>
