@@ -27,8 +27,8 @@
 		"check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
 		"test": "vitest run",
 		"ci": "pnpm build && pnpm check-format && pnpm test",
-		"local-release": "pnpm ci && changeset version && changeset publish",
-		"prepublishOnly": "pnpm ci"
+		"local-release": "pnpm run ci && changeset version && changeset publish",
+		"prepublishOnly": "pnpm run ci"
 	},
 	"bin": {
 		"surrealkit": "dist/cli.js",
