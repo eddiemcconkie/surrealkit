@@ -36,7 +36,7 @@ const program = new Command();
 
 program
 	.name('surrealkit')
-	.description('CLI tool for managing SurrealDB migrations and backups');
+	.description('CLI tool for managing SurrealDB migrations');
 
 program
 	.command('new <migration-name>')

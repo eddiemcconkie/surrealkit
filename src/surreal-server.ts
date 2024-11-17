@@ -1,4 +1,4 @@
-import { ChildProcess, execSync, spawn } from 'child_process';
+import { type ChildProcess, execSync, spawn } from 'child_process';
 import * as fs from 'fs';
 import { globSync } from 'glob';
 
@@ -31,9 +31,11 @@ type SurrealServerConfig = {
 
 export type SubDir = 'schema' | 'migrations';
 
+/**
+ * Can connect to a remote database or start a local in-memory database
+ */
 export class DB implements Disposable {
 	private server?: ChildProcess;
-	// client: Surreal;
 
 	constructor(private config: SurrealServerConfig) {
 		if (config.type === 'memory') {
@@ -77,14 +79,12 @@ export class DB implements Disposable {
 	}
 
 	async setup() {
-		if (this.config.type === 'memory') {
-			await this.sendQuery(
-				`DEFINE NAMESPACE IF NOT EXISTS ${this.config.namespace}`,
-			);
-			await this.sendQuery(
-				`DEFINE DATABASE IF NOT EXISTS ${this.config.database}`,
-			);
-		}
+		await this.sendQuery(
+			`DEFINE NAMESPACE IF NOT EXISTS ${this.config.namespace}`,
+		);
+		await this.sendQuery(
+			`DEFINE DATABASE IF NOT EXISTS ${this.config.database}`,
+		);
 	}
 
 	private getEndpoint(withProtocol = true) {
